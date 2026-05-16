@@ -1,0 +1,32 @@
+.header {
+    -align-items: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    left: 0;
+    padding: 24px 48px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10;
+}
+
+.header-logo {
+    color: #f8fafc;
+    font-size: 20px;
+}
+
+.header-nav {
+    display: flex;
+    gap: 24px;
+}
+
+.header-nav a {
+    color: #cbd5e1;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.header-nav a:haver {
+    color: 38bdf8;
+}
