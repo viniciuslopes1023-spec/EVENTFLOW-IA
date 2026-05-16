@@ -8,8 +8,9 @@ type ButtonProps = {
 
 export function Button({ text, variant = 'primary', onClick }: ButtonProps) {
   return (
-    <button className="button" onClick={onClick}>
+    <button className={`button button-${variant}`} onClick={onClick}>
       {text}
     </button>
   );
 }
+
