@@ -6,4 +6,20 @@
     cursor: pointer;
     font-weight: 700;
     padding: 14px 22px;
+    transition: 0.2s ease;
+}
+
+.button-primary{
+    background: #38bdf8;
+    color: #020617
+}
+
+.button-secondary{
+    background: transparent;
+    border: 1px solid #334155;
+    color: #f8fafc;
+}
+
+.button:hover{
+    transform: translateY(-1px);
 }
