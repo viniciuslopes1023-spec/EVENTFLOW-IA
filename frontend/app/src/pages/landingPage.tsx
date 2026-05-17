@@ -1,3 +1,4 @@
+import { MetricCard } from '../components/MetricCard/Metriccard';
 import { Button } from '../components/Button/Button';
 import { Header } from '../components/Header/Header';
 import '../styles/landing.css';
@@ -24,23 +25,23 @@ export function LandingPage() {
         </div>
 
         <aside className="hero-dashboard">
-          <div className="dashboard-card">
-            <span>Eventos ativos</span>
-            <strong>12</strong>
-            <small>2 finalizando esta semana</small>
-          </div>
+          <MetricCard
+            label="Eventos ativos"
+            value="12"
+            description="2 finalizando esta semana"
+          />
 
-          <div className="dashboard-card">
-            <span>Orçamento total</span>
-            <strong>R$ 1.24M</strong>
-            <small>+18.2% vs. mês anterior</small>
-          </div>
+          <MetricCard
+            label="Orçamento total"
+            value="R$ 1.24M"
+            description="+18.2% vs. mês anterior"
+          />
 
-          <div className="dashboard-card">
-            <span>Lucro estimado</span>
-            <strong>R$ 312K</strong>
-            <small>Margem média 25.1%</small>
-          </div>
+          <MetricCard
+            label="Lucro estimado"
+            value="R$ 312K"
+            description="Margem média 25.1%"
+          />
         </aside>
       </section>
 
