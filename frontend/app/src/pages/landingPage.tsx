@@ -1,4 +1,4 @@
-import { MetricCard } from '../components/MetricCard/Metriccard';
+import { MetricCard } from '../components/MetricCard/MetricCard';
 import { Button } from '../components/Button/Button';
 import { Header } from '../components/Header/Header';
 import '../styles/landing.css';
