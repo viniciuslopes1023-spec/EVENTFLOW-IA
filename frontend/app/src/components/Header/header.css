@@ -1,10 +1,13 @@
 .header {
-    -align-items: center;
+    align-items: center;
+    backdrop-filter: blur(16px);
+    background: rgba(15, 23, 42, 0.72);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
     display: flex;
     justify-content: space-between;
     gap: 24px;
     left: 0;
-    padding: 24px 48px;
+    padding: 20px 48px;
     position: fixed;
     right: 0;
     top: 0;
@@ -27,6 +30,16 @@
     text-decoration: none;
 }
 
-.header-nav a:haver {
-    color: 38bdf8;
+.header-nav a:hover {
+    color: #38bdf8;
+}
+
+@media (max-width: 720px) {
+    .header {
+        padding: 18px 20px;
+    }
+
+    .header-nav {
+        display: none;
+    }
 }
