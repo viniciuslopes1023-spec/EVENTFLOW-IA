@@ -5,7 +5,7 @@ import '../styles/landing.css';
 export function LandingPage() {
   return (
     <main className="landing-page">
-      <Header />
+      <Header/>
 
       <section className="hero-section">
         <p className="hero-tag">Gestão inteligente de eventos</p>
