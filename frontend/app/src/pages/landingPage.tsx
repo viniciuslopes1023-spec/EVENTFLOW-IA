@@ -1,7 +1,27 @@
-import { MetricCard } from '../components/MetricCard/MetricCard';
 import { Button } from '../components/Button/Button';
+import { FeatureCard } from '../components/FeatureCard/FeatureCard';
 import { Header } from '../components/Header/Header';
+import { MetricCard } from '../components/MetricCard/MetricCard';
 import '../styles/landing.css';
+
+const features = [
+  {
+    title: 'Controle financeiro',
+    description: 'Acompanhe orçamento, despesas, pagamentos pendentes e lucro estimado,'
+  },
+  {
+    title: 'Tarefas e cronogramas',
+    description: 'Organize etapas, prazos e checklists para cada eventos'
+  },
+  {
+    title: 'Fornecedores',
+    description: 'Centralize contatos, serviços, valores e status de contratação.'
+  },
+  {
+    title: 'Insights Com IA',
+    description: 'Gere checklists, alertas e sugestões para melhoraer a operação.'
+  },
+];
 
 export function LandingPage() {
   return (
@@ -52,25 +72,13 @@ export function LandingPage() {
         </div>
 
         <div className="features-grid">
-          <article className="feature-card">
-            <h3>Controle financeiro</h3>
-            <p>Acompanhe orçamento, despesas, pagamentos pendentes e lucro estimado.</p>
-          </article>
-
-          <article className="feature-card">
-            <h3>Tarefas e cronogramas</h3>
-            <p>Organize etapas, prazos e checklists para cada evento.</p>
-          </article>
-
-          <article className="feature-card">
-            <h3>Fornecedores</h3>
-            <p>Centralize contatos, serviços, valores e status de contratação.</p>
-          </article>
-
-          <article className="feature-card">
-            <h3>Insights com IA</h3>
-            <p>Gere checklists, alertas e sugestões para melhorar a operação.</p>
-          </article>
+          {features.map((feature) => (
+            <FeatureCard
+              key={feature.title}
+              title={feature.title}
+              description={feature.description}
+            />
+          ))}
         </div>
       </section>
     </main>
