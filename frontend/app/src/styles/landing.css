@@ -64,16 +64,6 @@
   max-width: 1180px;
 }
 
-.section-header {
-  margin-bottom: 32px;
-  max-width: 680px;
-}
-
-.section-header h2 {
-  font-size: 40px;
-  line-height: 1.15;
-  margin: 0;
-}
 
 .features-grid {
   display: grid;
