@@ -2,6 +2,7 @@ import { Button } from '../components/Button/Button';
 import { FeatureCard } from '../components/FeatureCard/FeatureCard';
 import { Header } from '../components/Header/Header';
 import { MetricCard } from '../components/MetricCard/MetricCard';
+import { SectionHeader} from '../components/SectionHeader/SectionHeader';
 import '../styles/landing.css';
 
 const features = [
@@ -66,11 +67,11 @@ export function LandingPage() {
       </section>
 
       <section className="features-section" id="features">
-        <div className="section-header">
-          <p className="hero-tag">Recursos principais</p>
-          <h2>Uma plataforma para organizar toda a operação do evento.</h2>
-        </div>
-
+        <SectionHeader
+        tag="Recursos principais"
+        title="Uma plataflorma para organizar toda a operação do evento"
+        />
+         
         <div className="features-grid">
           {features.map((feature) => (
             <FeatureCard
