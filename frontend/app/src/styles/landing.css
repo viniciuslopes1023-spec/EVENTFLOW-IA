@@ -81,23 +81,6 @@
   grid-template-columns: repeat(4, 1fr);
 }
 
-.feature-card {
-  background: #111c2f;
-  border: 1px solid #24324a;
-  border-radius: 12px;
-  padding: 24px;
-}
-
-.feature-card h3 {
-  font-size: 20px;
-  margin: 0 0 12px;
-}
-
-.feature-card p {
-  color: #94a3b8;
-  line-height: 1.6;
-  margin: 0;
-}
 
 @media (max-width: 900px) {
   .hero-section {
