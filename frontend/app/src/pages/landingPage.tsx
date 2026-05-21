@@ -20,7 +20,7 @@ const features = [
   },
   {
     title: 'Insights Com IA',
-    description: 'Gere checklists, alertas e sugestões para melhoraer a operação.'
+    description: 'Gere checklists, alertas e sugestões para melhorar a operação.'
   },
 ];
 
