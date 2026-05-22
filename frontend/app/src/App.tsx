@@ -18,4 +18,4 @@ function App() {
   }
  return <LandingPage onGoToLogin={() => setPage('login')} />;
 }
-export default App;
+export default App
