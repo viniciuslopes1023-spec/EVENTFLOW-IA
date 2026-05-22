@@ -17,5 +17,5 @@ export function Button({
     <button className={`button button-${variant}`} type={type} onClick={onClick}>
       {text}
     </button>
-  )
-}  
+  );
+};
