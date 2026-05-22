@@ -34,3 +34,9 @@ export const features = [
        description: 'Gere checklists, alertas e sugestões para melhorar a operação.',
     },
 ];
+
+export const aiInsight = {
+    title: 'Aumente a margem do seu próximo evento antes de fechar contratos.',
+    description: 'A IA analisa orçamento, fornecedores e pendencias para sugerir ajustes que reduzem custos e evitam atrasos.',
+    action: 'Ver sugestão da IA',
+};
