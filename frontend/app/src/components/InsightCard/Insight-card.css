@@ -1,0 +1,30 @@
+.insight-card {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.16), rgba(129, 140, 248, 0.12));
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    border-radius:  12px;
+    padding: 28px;
+}
+
+.insight-badge {
+    color: #28bdf8;
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.insight-card h3 {
+    font-size: 28px;
+    line-height: 1.2;
+    margin: 0 0 16px;
+}
+
+.insight-card bottom {
+    background: #f8fafc;
+    border: none;
+    border-radius: 8px;
+    color: #020617;
+    cursor:  pointer;
+    font-weight: 700;
+    padding: 12px 18px;
+}
