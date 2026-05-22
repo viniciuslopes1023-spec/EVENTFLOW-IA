@@ -17,7 +17,7 @@ export function PricingCard ({
     highlighted= false,
 }: PricingCardProps) {
     return (
-        <article className={`pricing-card ${highlihted ? 'pricing-card-highlihted' : "" }`}>
+        <article className={`pricing-card ${highlighted ? 'pricing-card-highlihted' : "" }`}>
             <span className="pricing-name">{name}</span>
             <strong>{price}</strong>
            <p>{description}</p>
