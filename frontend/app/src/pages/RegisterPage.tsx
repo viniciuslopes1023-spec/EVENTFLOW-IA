@@ -11,9 +11,9 @@ export function RegisterPage({ onGoToLogin }: RegisterPageProps ) {
         <main className="auth-page ">
             <section className="auth-card">
                 <div className="auth-header">
-                    <span>EventFlow IAw</span>
+                    <span>EventFlow IA</span>
                     <h1>Criar conta</h1>
-                    <p>Comece a organizar eventos com controle financeiro e apoio de IA</p>
+                    <p>Comece a organizar eventos com controle financeiro e apoio de IA.</p>
                 </div>
 
                 <form className="auth-form">
@@ -36,12 +36,12 @@ export function RegisterPage({ onGoToLogin }: RegisterPageProps ) {
                 </form>
 
                 <p className="auth-footer">
-                    Já tem uma conta? {' '}
-                    <button type="button" onClick={onGoToLogin}>
+                    Já tem uma conta?{' '}
+                    <a href="#" onClick={(e) => { e.preventDefault(); onGoToLogin(); }}>
                         Entrar
-                    </button>
+                    </a>
                 </p>
             </section>
         </main>
     );
-};
+}

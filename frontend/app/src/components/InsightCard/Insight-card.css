@@ -6,7 +6,7 @@
 }
 
 .insight-badge {
-    color: #28bdf8;
+    color: #38bdf8;
     display: block;
     font-size: 14px;
     font-weight: 700;
@@ -19,7 +19,7 @@
     margin: 0 0 16px;
 }
 
-.insight-card bottom {
+.insight-card button {
     background: #f8fafc;
     border: none;
     border-radius: 8px;

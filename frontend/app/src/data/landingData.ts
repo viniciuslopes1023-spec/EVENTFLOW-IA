@@ -38,7 +38,7 @@ export const features = [
 
 export const aiInsight = {
     title: 'Aumente a margem do seu próximo evento antes de fechar contratos.',
-    description: 'A IA analisa orçamento, fornecedores e pendencias para sugerir ajustes que reduzem custos e evitam atrasos.',
+    description: 'A IA analisa orçamento, fornecedores e pendências para sugerir ajustes que reduzem custos e evitam atrasos.',
     action: 'Ver sugestão da IA',
 };
 

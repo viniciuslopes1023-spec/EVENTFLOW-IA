@@ -1,7 +1,11 @@
 import { Button } from '../components/Button/Button';
 import '../styles/auth.css';
 
-export function LoginPage() {
+type LoginPageProps = {
+  onGoToRegister: () => void;
+};
+
+export function LoginPage({ onGoToRegister }: LoginPageProps) {
     return (
         <main className="auth-page">
             <section className="auth-card">
@@ -23,9 +27,9 @@ export function LoginPage() {
                     </label>
 
                     <Button text="Entrar" />
-                </form>-
+                </form>
                 <p className="auth-footer">
-                    Ainda não tem conta? <a href="#">Criar conta</a>
+                    Ainda não tem conta? <a href="#" onClick={(e) => { e.preventDefault(); onGoToRegister(); }}>Criar conta</a>
                 </p>
             </section>
         </main>

@@ -13,8 +13,8 @@ export function Header({ onLoginClick }: HeaderProps){
 
             <nav className="header-nav">
                 <a href="#features">Recursos</a>
-                <a href="#finances">Financeiro</a>
                 <a href="#ai">IA</a>
+                <a href="#pricing">Planos</a>
             </nav>
 
             <Button text="Entrar" variant='secondary' onClick={onLoginClick}></Button>

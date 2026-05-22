@@ -106,10 +106,10 @@
   gap: 48px;
   grid-template-columns: 0.9fr 1.1fr;
   margin: 96px auto 0;
-  max-width: 1180;
+  max-width: 1180px;
 }
 
-.ia-description {
+.ai-description {
   color: #94a3b8;
   font-size: 18px;
   line-height: 1.7;
@@ -118,8 +118,26 @@
 }
 
 @media (max-width: 900px) {
-  ai.section{
-    grid-template-columns: 1fr
+  .ai-section {
+    grid-template-columns: 1fr;
   }
+}
 
+.pricing-section {
+  margin: 120px auto 0;
+  max-width: 1180px;
+}
+
+.pricing-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 48px;
+}
+
+@media (max-width: 900px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 }
