@@ -1,9 +1,10 @@
 import { Button } from '../components/Button/Button';
 import { FeatureCard } from '../components/FeatureCard/FeatureCard';
 import { Header } from '../components/Header/Header';
+import { InsightCard } from '../components/InsightCard/InsightCard';
 import { MetricCard } from '../components/MetricCard/MetricCard';
 import { SectionHeader } from '../components/SectionHeader/SectionHeader';
-import { features, heroMetrics } from '../data/landingData';
+import { aiInsight, features, heroMetrics } from '../data/landingData';
 import '../styles/landing.css';
 
 export function LandingPage() {
@@ -55,6 +56,25 @@ export function LandingPage() {
           ))}
         </div>
       </section>
-    </main>
+              <section className="ai-section" id="ai">
+        <div>
+          <SectionHeader
+            tag="Inteligência artificial"
+            title="Use IA para transformar uma ideia de evento em plano de ação."
+          />
+
+          <p className="ai-description">
+            Descreva o evento que deseja organizar e receba uma primeira versão de checklist, cronograma, orçamento e alertas operacionais.
+          </p>
+        </div>
+
+        <InsightCard
+          title={aiInsight.title}
+          description={aiInsight.description}
+          action={aiInsight.action}
+        />
+      </section>
+
+    </main >
   );
 }
