@@ -35,5 +35,5 @@ export function RegisterPage() {
                 </p>
             </section>
         </main>
-    )
-}
+    );
+};
