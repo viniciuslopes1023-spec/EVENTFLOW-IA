@@ -41,3 +41,45 @@ export const aiInsight = {
     description: 'A IA analisa orçamento, fornecedores e pendencias para sugerir ajustes que reduzem custos e evitam atrasos.',
     action: 'Ver sugestão da IA',
 };
+
+export const pricingPlans = [
+  {
+    name: 'Gratuito',
+    price: 'R$0',
+    description: 'Ideal para experimentar a plataforma e organizar pequenos eventos.',
+    features: [
+      'Até 2 eventos ativos',
+      'Checklist e cronograma básicos',
+      'Controle financeiro simples',
+      'Suporte via e-mail',
+    ],
+    highlighted: false,
+  },
+  {
+    name: 'Profissional',
+    price: 'R$99/mês',
+    description: 'Para organizadores profissionais que precisam de mais poder e automação.',
+    features: [
+      'Eventos ativos ilimitados',
+      'Geração de planos com IA (10/mês)',
+      'Gestão de fornecedores avançada',
+      'Alertas de riscos e prazos',
+      'Suporte prioritário',
+    ],
+    highlighted: true,
+  },
+  {
+    name: 'Corporativo',
+    price: 'Sob consulta',
+    description: 'Solução sob medida para grandes agências e produtoras de eventos.',
+    features: [
+      'Tudo do Profissional',
+      'IA ilimitada',
+      'Múltiplos usuários e permissões',
+      'Integrações personalizadas',
+      'Gerente de contas dedicado',
+    ],
+    highlighted: false,
+  },
+];
+
