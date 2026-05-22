@@ -23,8 +23,7 @@ export function LoginPage() {
                     </label>
 
                     <Button text="Entrar" />
-                </form>
-
+                </form>-
                 <p className="auth-footer">
                     Ainda não tem conta? <a href="#">Criar conta</a>
                 </p>
