@@ -99,3 +99,27 @@
     grid-template-columns: 1fr;
   }
 }
+
+.ai-section {
+  align-items: center;
+  display: grid;
+  gap: 48px;
+  grid-template-columns: 0.9fr 1.1fr;
+  margin: 96px auto 0;
+  max-width: 1180;
+}
+
+.ia-description {
+  color: #94a3b8;
+  font-size: 18px;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 560px;
+}
+
+@media (max-width: 900px) {
+  ai.section{
+    grid-template-columns: 1fr
+  }
+
+}
