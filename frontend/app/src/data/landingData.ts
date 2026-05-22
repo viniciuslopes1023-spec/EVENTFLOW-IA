@@ -25,6 +25,7 @@ export const features = [
         title: 'Tarefas e cronogramas',
         description: 'Organize etapas, prazos e checklists para cada evento.',
     },
+    
     {
         title: 'Fornecedores',
         description: 'Centralize contatos, serviços, valores e status de contratação.',
