@@ -56,7 +56,7 @@ export function LandingPage() {
           ))}
         </div>
       </section>
-              <section className="ai-section" id="ai">
+      <section className="ai-section" id="ai">
         <div>
           <SectionHeader
             tag="Inteligência artificial"
