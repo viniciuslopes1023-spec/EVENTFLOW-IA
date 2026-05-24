@@ -1,20 +1,15 @@
-import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
+import express from 'express';
+import { env } from './config/env.js';
+import { routes } from './routes/index.js';
 
 const app = express();
-const port = Number(process.env.PORT) || 3333;
 
 app.use(cors());
 app.use(express.json());
+app.use(routes);
 
-app.get('/health', (_request, response) => {
-  return response.status(200).json({
-    status: 'ok',
-    service: 'EventFlow IA API',
-  });
-});
-
-app.listen(port, () => {
-  console.log(`EventFlow IA API running on port ${port}`);
+app.listen(env.port, () => {
+  console.log(`EventFlow IA API running on port ${env.port}`);
 });
