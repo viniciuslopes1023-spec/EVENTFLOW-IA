@@ -9,6 +9,18 @@ type Page = 'landing' | 'login' | 'register' | 'dashboard';
 function App() {
   const [page, setPage] = useState<Page>('landing');
 
+  function goToLogin() {
+    setPage('login');
+  }
+
+  function goToRegister() {
+    setPage('register');
+  }
+
+  function goToDashboard() {
+    setPage('dashboard');
+  }
+
   if (page === 'dashboard') {
     return <DashboardPage />;
   }
@@ -16,17 +28,17 @@ function App() {
   if (page === 'login') {
     return (
       <LoginPage
-        onGoToRegister={() => setPage('register')}
-        onLoginSuccess={() => setPage('dashboard')}
+        onGoToRegister={goToRegister}
+        onLoginSuccess={goToDashboard}
       />
     );
   }
 
   if (page === 'register') {
-    return <RegisterPage onGoToLogin={() => setPage('login')} />;
+    return <RegisterPage onGoToLogin={goToLogin} />;
   }
 
-  return <LandingPage onGoToLogin={() => setPage('login')} />;
+  return <LandingPage onGoToLogin={goToLogin} />;
 }
 
 export default App;
