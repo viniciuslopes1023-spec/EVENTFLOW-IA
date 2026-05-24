@@ -1,10 +1,8 @@
 import { Router } from 'express';
+import { HealthController } from '../controllers/HealthController.js';
 
 export const healthRoutes = Router();
 
-healthRoutes.get('/health', (_request, response) => {
-    return response.status(200).json({
-        status: 'ok',
-        service: 'EventFlow IA API',
-    });
-});
+const healthController = new HealthController();
+
+healthRoutes.get('/health', healthController.check);
