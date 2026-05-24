@@ -5,4 +5,4 @@ export const healthRoutes = Router();
 
 const healthController = new HealthController();
 
-healthRoutes.get('/health', healthController.check);
+healthRoutes.get('/health', healthController.check.bind(healthController));
