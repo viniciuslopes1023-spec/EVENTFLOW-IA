@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { DashboardPage } from './pages/DashboardPage';
-import { LandingPage } from './pages/landingPage';
+import { LandingPage } from './pages/LandingPage';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 

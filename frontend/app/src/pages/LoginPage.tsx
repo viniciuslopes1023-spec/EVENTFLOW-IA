@@ -19,7 +19,7 @@ export function LoginPage({ onGoToRegister, onLoginSuccess }: LoginPageProps) {
         <div className="auth-header">
           <span>EventFlow IA</span>
           <h1>Entrar na plataforma</h1>
-          <p>Acesse sua conta para gerenciar eventos, tarefas e finanças.</p>
+          <p>Acesse sua conta para gerenciar eventos, tarefas e financas.</p>
         </div>
 
         <form className="auth-form" onSubmit={handleSubmit}>
@@ -37,7 +37,7 @@ export function LoginPage({ onGoToRegister, onLoginSuccess }: LoginPageProps) {
         </form>
 
         <p className="auth-footer">
-          Ainda não tem conta?{' '}
+          Ainda nao tem conta?{' '}
           <button type="button" onClick={onGoToRegister}>
             Criar conta
           </button>

@@ -17,7 +17,7 @@ export function PricingCard ({
     highlighted= false,
 }: PricingCardProps) {
     return (
-        <article className={`pricing-card ${highlighted ? 'pricing-card-highlighted' : "" }`}>
+        <article className={`pricing-card ${highlighted ? 'pricing-card-highlighted' : ''}`}>
             <span className="pricing-name">{name}</span>
             <strong>{price}</strong>
            <p>{description}</p>
@@ -28,7 +28,7 @@ export function PricingCard ({
            ))}
            </ul>
 
-           <Button text="Escolher plano" variant={highlighted ? 'primary' : 'secondary'}></Button>
+           <Button text="Escolher plano" variant={highlighted ? 'primary' : 'secondary'} />
         
 
         </article>
