@@ -1,0 +1,23 @@
+.feature-card {
+    background: linear-gradient(180deg, rgba(35, 34, 49, 0.82), rgba(26, 25, 37, 0.68));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    transition: 0.2s ease;
+}
+
+.feature-card:hover {
+    border-color: rgba(87, 211, 255, 0.38);
+    transform: translateY(-3px);
+}
+
+.feature-card h3 {
+    font-size: 20px;
+    margin: 0 0 12px;
+}
+
+.feature-card p {
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0;
+}

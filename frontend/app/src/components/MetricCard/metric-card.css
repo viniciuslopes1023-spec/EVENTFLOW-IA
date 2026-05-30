@@ -1,0 +1,23 @@
+.metric-card {
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px;
+}
+
+.metric-card span {
+    color: var(--muted);
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.metric-card strong {
+    display: block;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.metric-card small {
+    color: var(--accent);
+}

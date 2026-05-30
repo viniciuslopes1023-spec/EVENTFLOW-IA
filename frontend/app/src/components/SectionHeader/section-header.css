@@ -1,0 +1,16 @@
+.section-header {
+    margin-bottom: 40px;
+    max-width: 680px;
+}
+
+.section-tag {
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0 0 16px;
+}
+
+.section-header h2 {
+    font-size: 40px;
+    line-height: 1.15;
+    margin: 0;
+}

@@ -1,0 +1,31 @@
+.button {
+    align-items: center;
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 14px 36px -18px rgba(87, 211, 255, 0.8);
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    gap: 8px;
+    font-weight: 700;
+    justify-content: center;
+    padding: 14px 22px;
+    transition: 0.2s ease;
+}
+
+.button-primary{
+    background: var(--gradient-primary);
+    color: #ffffff;
+}
+
+.button-secondary{
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border);
+    box-shadow: none;
+    color: var(--text);
+}
+
+.button:hover{
+    transform: translateY(-1px);
+}
