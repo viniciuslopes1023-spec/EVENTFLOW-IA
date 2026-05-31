@@ -1,0 +1,105 @@
+.event-form-panel {
+  margin-bottom: 24px;
+}
+
+.event-form-title {
+  font-size: 18px;
+  margin: 0 0 20px;
+}
+
+.event-form-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.event-form-row {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.event-input {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 14px;
+  padding: 12px 14px;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.event-input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.event-input::placeholder {
+  color: var(--muted);
+}
+
+.event-textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.event-submit-btn {
+  background: var(--gradient-primary);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 13px;
+  transition: opacity 0.2s;
+}
+
+.event-submit-btn:hover {
+  opacity: 0.88;
+}
+
+.events-count {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.event-empty {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+.event-row-actions {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.event-delete-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 16px;
+  height: 28px;
+  line-height: 1;
+  transition: all 0.15s;
+  width: 28px;
+}
+
+.event-delete-btn:hover {
+  border-color: #f87171;
+  color: #f87171;
+}
+
+.event-input[type="number"]::-webkit-outer-spin-button,
+.event-input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.event-input[type="number"] {
+  -moz-appearance: textfield;
+}

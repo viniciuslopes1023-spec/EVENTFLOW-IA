@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { type CreateEventData, type Event, eventService } from '../services/eventService';
 import '../styles/dashboard.css';
+import '../styles/events.css';
 
 export function EventsPage() {
   const [events, setEvents] = useState<Event[]>([]);
@@ -53,11 +55,11 @@ export function EventsPage() {
       <aside className="dashboard-sidebar">
         <strong>EventFlow IA</strong>
         <nav>
-          <a href="/dashboard">Dashboard</a>
-          <a className="active" href="/events">Eventos</a>
-          <a href="#">Financeiro</a>
-          <a href="#">Tarefas</a>
-          <a href="#">Fornecedores</a>
+          <Link to="/dashboard">Dashboard</Link>
+          <Link className="active" to="/events">Eventos</Link>
+          <Link to="#">Financeiro</Link>
+          <Link to="#">Tarefas</Link>
+          <Link to="#">Fornecedores</Link>
         </nav>
       </aside>
 
@@ -73,41 +75,43 @@ export function EventsPage() {
         </header>
 
         {showForm && (
-          <article className="dashboard-panel" style={{ marginBottom: '24px' }}>
-            <h2 style={{ marginTop: 0 }}>Novo evento</h2>
-            <div style={{ display: 'grid', gap: '12px' }}>
+          <article className="dashboard-panel event-form-panel">
+            <h2 className="event-form-title">Novo evento</h2>
+            <div className="event-form-grid">
               <input
+                className="event-input"
                 placeholder="Título do evento *"
                 value={form.title}
                 onChange={(e) => setForm({ ...form, title: e.target.value })}
-                style={{ padding: '10px', borderRadius: '8px', border: '1px solid var(--border)', background: 'var(--bg-soft)', color: 'var(--text)' }}
               />
+              <div className="event-form-row">
+                <input
+                  className="event-input"
+                  type="date"
+                  value={form.date}
+                  onChange={(e) => setForm({ ...form, date: e.target.value })}
+                />
+                <input
+                  className="event-input"
+                  placeholder="Local"
+                  value={form.location}
+                  onChange={(e) => setForm({ ...form, location: e.target.value })}
+                />
+              </div>
               <input
-                type="date"
-                value={form.date}
-                onChange={(e) => setForm({ ...form, date: e.target.value })}
-                style={{ padding: '10px', borderRadius: '8px', border: '1px solid var(--border)', background: 'var(--bg-soft)', color: 'var(--text)' }}
-              />
-              <input
-                placeholder="Local"
-                value={form.location}
-                onChange={(e) => setForm({ ...form, location: e.target.value })}
-                style={{ padding: '10px', borderRadius: '8px', border: '1px solid var(--border)', background: 'var(--bg-soft)', color: 'var(--text)' }}
-              />
-              <input
+                className="event-input"
                 type="number"
                 placeholder="Orçamento (R$)"
                 value={form.budget || ''}
                 onChange={(e) => setForm({ ...form, budget: Number(e.target.value) })}
-                style={{ padding: '10px', borderRadius: '8px', border: '1px solid var(--border)', background: 'var(--bg-soft)', color: 'var(--text)' }}
               />
               <textarea
-                placeholder="Descrição"
+                className="event-input event-textarea"
+                placeholder="Descrição do evento"
                 value={form.description}
                 onChange={(e) => setForm({ ...form, description: e.target.value })}
-                style={{ padding: '10px', borderRadius: '8px', border: '1px solid var(--border)', background: 'var(--bg-soft)', color: 'var(--text)', minHeight: '80px' }}
               />
-              <button onClick={handleCreate} style={{ padding: '12px', borderRadius: '8px', background: 'var(--primary)', color: '#fff', border: 'none', cursor: 'pointer', fontWeight: 600 }}>
+              <button className="event-submit-btn" onClick={handleCreate}>
                 Criar evento
               </button>
             </div>
@@ -117,13 +121,13 @@ export function EventsPage() {
         <article className="dashboard-panel">
           <div className="panel-header">
             <h2>Todos os eventos</h2>
-            <span style={{ color: 'var(--muted)' }}>{events.length} eventos</span>
+            <span className="events-count">{events.length} eventos</span>
           </div>
 
           <div className="event-list">
-            {loading && <p>Carregando...</p>}
+            {loading && <p className="event-empty">Carregando...</p>}
             {!loading && events.length === 0 && (
-              <p style={{ color: 'var(--muted)' }}>Nenhum evento criado ainda.</p>
+              <p className="event-empty">Nenhum evento criado ainda.</p>
             )}
             {events.map((event) => (
               <div className="event-row" key={event.id}>
@@ -135,14 +139,11 @@ export function EventsPage() {
                     {` · ${event.status}`}
                   </span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div className="event-row-actions">
                   <small>
                     {event.budget ? `R$ ${event.budget.toLocaleString('pt-BR')}` : 'Sem orçamento'}
                   </small>
-                  <button
-                    onClick={() => handleDelete(event.id)}
-                    style={{ background: 'none', border: 'none', color: 'var(--muted)', cursor: 'pointer', fontSize: '18px' }}
-                  >
+                  <button className="event-delete-btn" onClick={() => handleDelete(event.id)}>
                     ×
                   </button>
                 </div>
