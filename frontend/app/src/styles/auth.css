@@ -67,6 +67,7 @@
     font-size: 15px;
     padding: 14px;
     transition: border-color 0.2s;
+    width: 100%;
 }
 
 .auth-form input:focus {
@@ -97,6 +98,12 @@
     font-size: 14px;
 }
 
+.auth-footer a {
+    color: #38bdf8;
+    font-weight: 700;
+    text-decoration: none;
+}
+
 .auth-footer button {
     background: none;
     border: none;
@@ -114,4 +121,32 @@
     font-size: 14px;
     margin: 0;
     padding: 10px 14px;
+}
+
+.auth-password-wrapper {
+    position: relative;
+}
+
+.auth-password-wrapper input {
+    padding-right: 48px;
+    width: 100%;
+}
+
+.auth-password-toggle {
+    align-items: center;
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    display: flex;
+    padding: 0;
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: color 0.2s;
+}
+
+.auth-password-toggle:hover {
+    color: var(--text);
 }
