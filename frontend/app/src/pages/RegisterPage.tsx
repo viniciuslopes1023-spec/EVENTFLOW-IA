@@ -15,19 +15,19 @@ export function RegisterPage({ onGoToLogin }: RegisterPageProps) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setError('');
-    setLoading(true);
-    try {
-      await register(name, email, password);
-    } catch {
-      setError('Erro ao criar conta. Tente outro email.');
-    } finally {
-      setLoading(false);
-    }
+   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  event.preventDefault();
+  setError('');
+  setLoading(true);
+  try {
+    await register(name, email, password);
+    window.location.href = '/dashboard';
+  } catch {
+    setError('Erro ao criar conta. Tente outro email.');
+  } finally {
+    setLoading(false);
   }
+}
 
   return (
     <main className="auth-page">
