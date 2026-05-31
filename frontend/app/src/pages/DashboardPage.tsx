@@ -1,55 +1,34 @@
+import { useEffect, useState } from 'react';
+import { useAuth } from '../contexts/AuthContext';
+import { type Event, eventService } from '../services/eventService';
 import '../styles/dashboard.css';
 
-const dashboardMetrics = [
-  {
-    label: 'Eventos ativos',
-    value: '12',
-    description: '2 finalizando esta semana',
-  },
-  {
-    label: 'Orçamento total',
-    value: 'R$ 1.24M',
-    description: '+18.2% vs. mês anterior',
-  },
-  {
-    label: 'Lucro estimado',
-    value: 'R$ 312K',
-    description: 'Margem média 25.1%',
-  },
-  {
-    label: 'Pendências',
-    value: '7',
-    description: '4 tarefas · 3 pagamentos',
-  },
-];
-
-const upcomingEvents = [
-  {
-    name: 'Campeonato Valorant LATAM',
-    date: '12 Jun',
-    status: 'Em produção',
-    budget: 'R$ 184.000',
-  },
-  {
-    name: 'Tech Summit São Paulo',
-    date: '28 Jun',
-    status: 'Planejamento',
-    budget: 'R$ 92.000',
-  },
-  {
-    name: 'Festival Indie Music',
-    date: '14 Jul',
-    status: 'Confirmado',
-    budget: 'R$ 320.000',
-  },
-];
-
 export function DashboardPage() {
+  const { user, logout } = useAuth();
+  const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadEvents() {
+      try {
+        const data = await eventService.getAll();
+        setEvents(data);
+      } catch (error) {
+        console.error('Erro ao carregar eventos:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadEvents();
+  }, []);
+
+  const totalBudget = events.reduce((acc, e) => acc + (e.budget || 0), 0);
+  const activeEvents = events.filter(e => e.status !== 'finished').length;
+
   return (
     <main className="dashboard-page">
       <aside className="dashboard-sidebar">
         <strong>EventFlow IA</strong>
-
         <nav>
           <a className="active" href="#">Dashboard</a>
           <a href="#">Eventos</a>
@@ -57,26 +36,34 @@ export function DashboardPage() {
           <a href="#">Tarefas</a>
           <a href="#">Fornecedores</a>
         </nav>
+        <button onClick={logout} style={{ marginTop: 'auto' }}>Sair</button>
       </aside>
 
       <section className="dashboard-content">
         <header className="dashboard-header">
           <div>
             <h1>Dashboard</h1>
-            <p>Bem-vindo de volta. Aqui está o resumo dos seus eventos.</p>
+            <p>Bem-vindo, {user?.name}. Aqui está o resumo dos seus eventos.</p>
           </div>
-
           <button>Criar com IA</button>
         </header>
 
         <section className="dashboard-metrics">
-          {dashboardMetrics.map((metric) => (
-            <article className="dashboard-metric" key={metric.label}>
-              <span>{metric.label}</span>
-              <strong>{metric.value}</strong>
-              <small>{metric.description}</small>
-            </article>
-          ))}
+          <article className="dashboard-metric">
+            <span>Eventos ativos</span>
+            <strong>{activeEvents}</strong>
+            <small>{events.length} no total</small>
+          </article>
+          <article className="dashboard-metric">
+            <span>Orçamento total</span>
+            <strong>R$ {totalBudget.toLocaleString('pt-BR')}</strong>
+            <small>Soma de todos os eventos</small>
+          </article>
+          <article className="dashboard-metric">
+            <span>Pendências</span>
+            <strong>0</strong>
+            <small>Nenhuma tarefa pendente</small>
+          </article>
         </section>
 
         <section className="dashboard-grid">
@@ -87,14 +74,23 @@ export function DashboardPage() {
             </div>
 
             <div className="event-list">
-              {upcomingEvents.map((event) => (
-                <div className="event-row" key={event.name}>
+              {loading && <p>Carregando...</p>}
+              {!loading && events.length === 0 && (
+                <p style={{ color: 'var(--muted)' }}>Nenhum evento criado ainda.</p>
+              )}
+              {events.map((event) => (
+                <div className="event-row" key={event.id}>
                   <div>
-                    <strong>{event.name}</strong>
-                    <span>{event.date} · {event.status}</span>
+                    <strong>{event.title}</strong>
+                    <span>
+                      {new Date(event.date).toLocaleDateString('pt-BR')} · {event.status}
+                    </span>
                   </div>
-
-                  <small>{event.budget}</small>
+                  <small>
+                    {event.budget
+                      ? `R$ ${event.budget.toLocaleString('pt-BR')}`
+                      : 'Sem orçamento'}
+                  </small>
                 </div>
               ))}
             </div>
@@ -102,11 +98,11 @@ export function DashboardPage() {
 
           <article className="dashboard-panel ai-panel">
             <span>Insight da IA</span>
-            <h2>Você pode aumentar a margem do Festival Indie em 8.4%</h2>
+            <h2>Crie seu primeiro evento com IA</h2>
             <p>
-              Detectamos fornecedores com cotações acima da média. Renegociar pode liberar R$ 26.800 no orçamento.
+              Descreva o evento que deseja organizar e receba checklist, cronograma e orçamento automaticamente.
             </p>
-            <button>Ver sugestões</button>
+            <button>Criar com IA</button>
           </article>
         </section>
       </section>
