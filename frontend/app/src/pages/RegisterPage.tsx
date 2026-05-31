@@ -1,5 +1,7 @@
 import type { FormEvent } from 'react';
+import { useState } from 'react';
 import { Button } from '../components/Button/Button';
+import { useAuth } from '../contexts/AuthContext';
 import '../styles/auth.css';
 
 type RegisterPageProps = {
@@ -7,9 +9,24 @@ type RegisterPageProps = {
 };
 
 export function RegisterPage({ onGoToLogin }: RegisterPageProps) {
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  const { register } = useAuth();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    onGoToLogin();
+    setError('');
+    setLoading(true);
+    try {
+      await register(name, email, password);
+    } catch {
+      setError('Erro ao criar conta. Tente outro email.');
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -24,24 +41,41 @@ export function RegisterPage({ onGoToLogin }: RegisterPageProps) {
         <form className="auth-form" onSubmit={handleSubmit}>
           <label>
             Nome
-            <input type="text" placeholder="Seu nome" />
+            <input
+              type="text"
+              placeholder="Seu nome"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
           </label>
 
           <label>
             Email
-            <input type="email" placeholder="seuemail@empresa.com" />
+            <input
+              type="email"
+              placeholder="seuemail@empresa.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </label>
 
           <label>
             Senha
-            <input type="password" placeholder="Crie uma senha" />
+            <input
+              type="password"
+              placeholder="Crie uma senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </label>
 
-          <Button text="Criar conta" type="submit" />
+          {error && <p className="auth-error">{error}</p>}
+
+          <Button text={loading ? 'Criando...' : 'Criar conta'} type="submit" />
         </form>
 
         <p className="auth-footer">
-          Ja tem uma conta?{' '}
+          Já tem uma conta?{' '}
           <button type="button" onClick={onGoToLogin}>
             Entrar
           </button>
