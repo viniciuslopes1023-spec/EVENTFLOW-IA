@@ -1,44 +1,34 @@
-import { useState } from 'react';
+import type { ReactNode } from 'react';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { useAuth } from './contexts/AuthContext';
 import { DashboardPage } from './pages/DashboardPage';
 import { LandingPage } from './pages/LandingPage';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 
-type Page = 'landing' | 'login' | 'register' | 'dashboard';
+function PrivateRoute({ children }: { children: ReactNode }) {
+  const { user, loading } = useAuth();
+  if (loading) return null;
+  return user ? <>{children}</> : <Navigate to="/login" />;
+}
 
 function App() {
-  const [page, setPage] = useState<Page>('landing');
-
-  function goToLogin() {
-    setPage('login');
-  }
-
-  function goToRegister() {
-    setPage('register');
-  }
-
-  function goToDashboard() {
-    setPage('dashboard');
-  }
-
-  if (page === 'dashboard') {
-    return <DashboardPage />;
-  }
-
-  if (page === 'login') {
-    return (
-      <LoginPage
-        onGoToRegister={goToRegister}
-        onLoginSuccess={goToDashboard}
+  const navigate = useNavigate();
+  return (
+    <Routes>
+      <Route path="/" element={<LandingPage onGoToLogin={() => navigate('/login')} />} />
+      <Route path="/login" element={<LoginPage onGoToRegister={() => navigate('/register')} onLoginSuccess={() => navigate('/dashboard')} />} />
+      <Route path="/register" element={<RegisterPage onGoToLogin={() => navigate('/login')} />} />
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <DashboardPage />
+          </PrivateRoute>
+        }
       />
-    );
-  }
-
-  if (page === 'register') {
-    return <RegisterPage onGoToLogin={goToLogin} />;
-  }
-
-  return <LandingPage onGoToLogin={goToLogin} />;
+    </Routes>
+  );
 }
 
 export default App;
