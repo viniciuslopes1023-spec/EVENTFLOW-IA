@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
 import { DashboardPage } from './pages/DashboardPage';
+import { EventsPage } from './pages/EventsPage';
 import { LandingPage } from './pages/LandingPage';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
@@ -24,6 +25,14 @@ function App() {
         element={
           <PrivateRoute>
             <DashboardPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/events"
+        element={
+          <PrivateRoute>
+            <EventsPage />
           </PrivateRoute>
         }
       />

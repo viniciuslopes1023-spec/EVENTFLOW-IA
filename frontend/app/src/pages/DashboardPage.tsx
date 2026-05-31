@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { type Event, eventService } from '../services/eventService';
 import '../styles/dashboard.css';
@@ -30,11 +31,11 @@ export function DashboardPage() {
       <aside className="dashboard-sidebar">
         <strong>EventFlow IA</strong>
         <nav>
-          <a className="active" href="#">Dashboard</a>
-          <a href="#">Eventos</a>
-          <a href="#">Financeiro</a>
-          <a href="#">Tarefas</a>
-          <a href="#">Fornecedores</a>
+          <Link className="active" to="/dashboard">Dashboard</Link>
+          <Link to="/events">Eventos</Link>
+          <Link to="#">Financeiro</Link>
+          <Link to="#">Tarefas</Link>
+          <Link to="#">Fornecedores</Link>
         </nav>
         <button onClick={logout} style={{ marginTop: 'auto' }}>Sair</button>
       </aside>
@@ -70,7 +71,7 @@ export function DashboardPage() {
           <article className="dashboard-panel">
             <div className="panel-header">
               <h2>Próximos eventos</h2>
-              <a href="#">Ver todos</a>
+              <Link to="/events">Ver todos</Link>
             </div>
 
             <div className="event-list">
