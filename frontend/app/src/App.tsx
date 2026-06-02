@@ -6,6 +6,7 @@ import { EventsPage } from './pages/EventsPage';
 import { LandingPage } from './pages/LandingPage';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
+import { TasksPage } from './pages/TasksPage';
 
 function PrivateRoute({ children }: { children: ReactNode }) {
   const { user, loading } = useAuth();
@@ -33,6 +34,14 @@ function App() {
         element={
           <PrivateRoute>
             <EventsPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/tasks"
+        element={
+          <PrivateRoute>
+            <TasksPage />
           </PrivateRoute>
         }
       />

@@ -34,7 +34,7 @@ export function DashboardPage() {
           <Link className="active" to="/dashboard">Dashboard</Link>
           <Link to="/events">Eventos</Link>
           <Link to="#">Financeiro</Link>
-          <Link to="#">Tarefas</Link>
+          <Link to="/tasks">Tarefas</Link>
           <Link to="#">Fornecedores</Link>
         </nav>
         <button onClick={logout} style={{ marginTop: 'auto' }}>Sair</button>

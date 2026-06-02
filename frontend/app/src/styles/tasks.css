@@ -1,0 +1,144 @@
+.tasks-event-selector {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tasks-event-selector label {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.tasks-select {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 14px;
+  padding: 12px 14px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.tasks-select:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.tasks-progress-panel {
+  margin-bottom: 16px;
+}
+
+.tasks-progress-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.tasks-progress-header span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.tasks-progress-header strong {
+  color: var(--primary);
+  font-size: 15px;
+}
+
+.tasks-progress-track {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.tasks-progress-bar {
+  background: var(--gradient-primary);
+  border-radius: 999px;
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.tasks-input-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.tasks-input-row .event-input {
+  flex: 1;
+}
+
+.tasks-add-btn {
+  background: var(--gradient-primary);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 20px;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.tasks-add-btn:hover {
+  opacity: 0.88;
+}
+
+.tasks-list {
+  display: grid;
+  gap: 8px;
+}
+
+.task-row {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  gap: 12px;
+  padding: 12px 14px;
+  transition: border-color 0.15s;
+}
+
+.task-row:hover {
+  border-color: rgba(155, 124, 255, 0.3);
+}
+
+.task-row.task-done {
+  opacity: 0.6;
+}
+
+.task-check {
+  align-items: center;
+  background: none;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  height: 22px;
+  justify-content: center;
+  transition: all 0.15s;
+  width: 22px;
+}
+
+.task-done .task-check {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.task-title {
+  color: var(--text);
+  flex: 1;
+  font-size: 14px;
+}
+
+.task-done .task-title {
+  color: var(--muted);
+  text-decoration: line-through;
+}

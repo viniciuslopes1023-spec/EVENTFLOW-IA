@@ -58,7 +58,7 @@ export function EventsPage() {
           <Link to="/dashboard">Dashboard</Link>
           <Link className="active" to="/events">Eventos</Link>
           <Link to="#">Financeiro</Link>
-          <Link to="#">Tarefas</Link>
+          <Link to="/tasks">Tarefas</Link>
           <Link to="#">Fornecedores</Link>
         </nav>
       </aside>
@@ -85,22 +85,35 @@ export function EventsPage() {
                 onChange={(e) => setForm({ ...form, title: e.target.value })}
               />
               <div className="event-form-row">
-                <input
-                  className="event-input"
-                  type="date"
-                  value={form.date}
-                  onChange={(e) => setForm({ ...form, date: e.target.value })}
-                />
-                <input
-                  className="event-input"
-                  placeholder="Local"
-                  value={form.location}
-                  onChange={(e) => setForm({ ...form, location: e.target.value })}
-                />
+                <label className="event-label">
+                  Data
+                  <input
+                    className="event-input"
+                    type="date"
+                    value={form.date ? form.date.split('T')[0] : ''}
+                    onChange={(e) => setForm({ ...form, date: e.target.value + 'T' + (form.date?.split('T')[1] || '00:00') })}
+                  />
+                </label>
+                <label className="event-label">
+                  Horário
+                  <input
+                    className="event-input"
+                    type="time"
+                    value={form.date ? form.date.split('T')[1] || '00:00' : '00:00'}
+                    onChange={(e) => setForm({ ...form, date: (form.date?.split('T')[0] || '') + 'T' + e.target.value })}
+                  />
+                </label>
               </div>
               <input
                 className="event-input"
+                placeholder="Local"
+                value={form.location}
+                onChange={(e) => setForm({ ...form, location: e.target.value })}
+              />
+              <input
+                className="event-input"
                 type="number"
+                min="0"
                 placeholder="Orçamento (R$)"
                 value={form.budget || ''}
                 onChange={(e) => setForm({ ...form, budget: Number(e.target.value) })}
@@ -134,7 +147,7 @@ export function EventsPage() {
                 <div>
                   <strong>{event.title}</strong>
                   <span>
-                    {new Date(event.date).toLocaleDateString('pt-BR')}
+                    {new Date(event.date).toLocaleDateString('pt-BR')} às {new Date(event.date).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}
                     {event.location && ` · ${event.location}`}
                     {` · ${event.status}`}
                   </span>
