@@ -1,0 +1,51 @@
+.fin-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.fin-summary-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.fin-summary-card span {
+  color: var(--muted);
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.fin-summary-card strong {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.fin-income strong { color: var(--success); }
+.fin-expense strong { color: #f87171; }
+.fin-balance-pos strong { color: var(--accent); }
+.fin-balance-neg strong { color: #f87171; }
+
+.fin-form-panel {
+  margin-bottom: 24px;
+}
+
+.fin-transaction-title {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.fin-amount {
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.fin-amount-income { color: var(--success); }
+.fin-amount-expense { color: #f87171; }
