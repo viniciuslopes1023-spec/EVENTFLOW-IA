@@ -5,6 +5,7 @@ import { env } from './config/env.js';
 import authRoutes from './routes/authRoutes.js';
 import eventRoutes from './routes/eventRoutes.js';
 import taskRoutes from './routes/taskRoutes.js';
+import transactionRoutes from './routes/transactionRoutes.js';
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/events', taskRoutes);
 app.use('/api', taskRoutes);
+app.use('/api/events', transactionRoutes);
 
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });

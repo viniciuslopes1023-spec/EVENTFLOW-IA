@@ -7,6 +7,7 @@ import { LandingPage } from './pages/LandingPage';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { TasksPage } from './pages/TasksPage';
+import FinanceiroPage from './pages/FinanceiroPage';
 
 function PrivateRoute({ children }: { children: ReactNode }) {
   const { user, loading } = useAuth();
@@ -42,6 +43,14 @@ function App() {
         element={
           <PrivateRoute>
             <TasksPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/events/:eventId/financeiro"
+        element={
+          <PrivateRoute>
+            <FinanceiroPage />
           </PrivateRoute>
         }
       />

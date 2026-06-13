@@ -105,4 +105,4 @@ export function RegisterPage({ onGoToLogin }: RegisterPageProps) {
       </section>
     </main>
   );
-}
+};                                                                                                                                
