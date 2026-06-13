@@ -8,6 +8,7 @@ import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { TasksPage } from './pages/TasksPage';
 import FinanceiroPage from './pages/FinanceiroPage';
+import FinanceiroIndexPage from './pages/FinanceiroIndexPage';
 
 function PrivateRoute({ children }: { children: ReactNode }) {
   const { user, loading } = useAuth();
@@ -51,6 +52,14 @@ function App() {
         element={
           <PrivateRoute>
             <FinanceiroPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/financeiro"
+        element={
+          <PrivateRoute>
+            <FinanceiroIndexPage />
           </PrivateRoute>
         }
       />

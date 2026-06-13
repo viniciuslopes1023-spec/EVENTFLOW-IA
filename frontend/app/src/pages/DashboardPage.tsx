@@ -33,7 +33,7 @@ export function DashboardPage() {
         <nav>
           <Link className="active" to="/dashboard">Dashboard</Link>
           <Link to="/events">Eventos</Link>
-          <Link to="#">Financeiro</Link>
+          <Link to="/financeiro">Financeiro</Link>
           <Link to="/tasks">Tarefas</Link>
           <Link to="#">Fornecedores</Link>
         </nav>
@@ -87,11 +87,16 @@ export function DashboardPage() {
                       {new Date(event.date).toLocaleDateString('pt-BR')} · {event.status}
                     </span>
                   </div>
-                  <small>
-                    {event.budget
-                      ? `R$ ${event.budget.toLocaleString('pt-BR')}`
-                      : 'Sem orçamento'}
-                  </small>
+                  <div className="event-row-actions">
+                    <small>
+                      {event.budget
+                        ? `R$ ${event.budget.toLocaleString('pt-BR')}`
+                        : 'Sem orçamento'}
+                    </small>
+                    <Link to={`/events/${event.id}/financeiro`} className="event-fin-btn">
+                      Financeiro
+                    </Link>
+                  </div>
                 </div>
               ))}
             </div>

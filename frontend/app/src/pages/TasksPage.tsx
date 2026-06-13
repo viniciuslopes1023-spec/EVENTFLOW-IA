@@ -63,7 +63,7 @@ export function TasksPage() {
         <nav>
           <Link to="/dashboard">Dashboard</Link>
           <Link to="/events">Eventos</Link>
-          <Link to="#">Financeiro</Link>
+          <Link to="/financeiro">Financeiro</Link>
           <Link className="active" to="/tasks">Tarefas</Link>
           <Link to="#">Fornecedores</Link>
         </nav>

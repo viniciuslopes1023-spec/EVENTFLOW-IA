@@ -57,7 +57,7 @@ export function EventsPage() {
         <nav>
           <Link to="/dashboard">Dashboard</Link>
           <Link className="active" to="/events">Eventos</Link>
-          <Link to="#">Financeiro</Link>
+          <Link to="/financeiro">Financeiro</Link>
           <Link to="/tasks">Tarefas</Link>
           <Link to="#">Fornecedores</Link>
         </nav>
@@ -156,12 +156,16 @@ export function EventsPage() {
                   <small>
                     {event.budget ? `R$ ${event.budget.toLocaleString('pt-BR')}` : 'Sem orçamento'}
                   </small>
+                  <Link to={`/events/${event.id}/financeiro`} className="event-fin-btn">
+                    Financeiro
+                  </Link>
                   <button className="event-delete-btn" onClick={() => handleDelete(event.id)}>
                     ×
                   </button>
                 </div>
               </div>
             ))}
+
           </div>
         </article>
       </section>
