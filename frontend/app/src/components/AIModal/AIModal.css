@@ -72,6 +72,38 @@
   opacity: 0.7;
 }
 
+.ai-form-group {
+  margin-bottom: 16px;
+}
+
+.ai-form-group label {
+  color: var(--muted);
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.ai-form-group select {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  padding: 12px 14px;
+  width: 100%;
+}
+
+.ai-form-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.ai-form-group select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .ai-modal-error {
   color: #ef4444;
   font-size: 13px;

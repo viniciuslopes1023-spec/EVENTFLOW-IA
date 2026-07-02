@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { aiService } from '../../services/aiService';
+import { eventService, type Event } from '../../services/eventService';
 import type { AIEventSuggestion } from '../../types/ai';
 import './AIModal.css';
 
@@ -16,6 +17,16 @@ export function AIModal({ onClose, eventId, initialPlan }: AIModalProps) {
   const [result, setResult] = useState<AIEventSuggestion | null>(initialPlan || null);
   const [checkedItems, setCheckedItems] = useState<boolean[]>(initialPlan ? new Array(initialPlan.checklist.length).fill(false) : []);
   const [saved, setSaved] = useState(!!initialPlan);
+  const [events, setEvents] = useState<Event[]>([]);
+  const [selectedEventId, setSelectedEventId] = useState<string>(eventId || '');
+
+  useEffect(() => {
+    async function loadEvents() {
+      const data = await eventService.getAll();
+      setEvents(data);
+    }
+    loadEvents();
+  }, []);
 
   const handleSubmit = async () => {
     if (description.trim().length < 10) {
@@ -31,9 +42,9 @@ export function AIModal({ onClose, eventId, initialPlan }: AIModalProps) {
       setResult(plan);
       setCheckedItems(new Array(plan.checklist.length).fill(false));
 
-      if (eventId) {
+      if (selectedEventId) {
         try {
-          await aiService.saveEventPlan(eventId, plan);
+          await aiService.saveEventPlan(selectedEventId, plan);
           setSaved(true);
         } catch {
           console.error('Erro ao salvar plano');
@@ -70,6 +81,22 @@ export function AIModal({ onClose, eventId, initialPlan }: AIModalProps) {
           <div className="ai-modal-form">
             <h2>Criar evento com IA</h2>
             <p>Descreva seu evento e receba um plano completo com checklist, fornecedores e orçamento.</p>
+
+            <div className="ai-form-group">
+              <label>Selecione o evento (opcional)</label>
+              <select
+                value={selectedEventId}
+                onChange={(e) => setSelectedEventId(e.target.value)}
+                disabled={!!eventId}
+              >
+                <option value="">Nenhum (só gerar o plano)</option>
+                {events.map((event) => (
+                  <option key={event.id} value={event.id}>
+                    {event.title}
+                  </option>
+                ))}
+              </select>
+            </div>
 
             <textarea
               placeholder="Ex: Festa de casamento para 150 pessoas em São Paulo, estilo rústico, com jantar completo e banda ao vivo"
