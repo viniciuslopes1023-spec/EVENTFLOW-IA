@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { type Event, eventService } from '../services/eventService';
 import { Sidebar } from '../components/Sidebar/Sidebar';
+import { AIModal } from '../components/AIModal/AIModal';
 import '../styles/dashboard.css';
 
 export function DashboardPage() {
   const { user } = useAuth();
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showAIModal, setShowAIModal] = useState(false);
 
   useEffect(() => {
     async function loadEvents() {
@@ -37,7 +39,7 @@ export function DashboardPage() {
             <h1>Dashboard</h1>
             <p>Bem-vindo, {user?.name}. Aqui está o resumo dos seus eventos.</p>
           </div>
-          <button>Criar com IA</button>
+          <button onClick={() => setShowAIModal(true)}>Criar com IA</button>
         </header>
 
         <section className="dashboard-metrics">
@@ -99,10 +101,12 @@ export function DashboardPage() {
             <p>
               Descreva o evento que deseja organizar e receba checklist, cronograma e orçamento automaticamente.
             </p>
-            <button>Criar com IA</button>
+            <button onClick={() => setShowAIModal(true)}>Criar com IA</button>
           </article>
         </section>
       </section>
+
+      {showAIModal && <AIModal onClose={() => setShowAIModal(false)} />}
     </main>
   );
 }

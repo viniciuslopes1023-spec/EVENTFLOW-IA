@@ -7,6 +7,7 @@ import eventRoutes from './routes/eventRoutes.js';
 import taskRoutes from './routes/taskRoutes.js';
 import transactionRoutes from './routes/transactionRoutes.js';
 import supplierRoutes from './routes/supplierRoutes.js';
+import aiRoutes from './routes/aiRoutes.js';
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use('/api/events', taskRoutes);
 app.use('/api', taskRoutes);
 app.use('/api/events', transactionRoutes);
 app.use('/api/events', supplierRoutes);
+app.use('/api/ai', aiRoutes);
 
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
