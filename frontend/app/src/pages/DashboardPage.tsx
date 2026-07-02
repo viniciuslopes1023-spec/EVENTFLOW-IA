@@ -11,6 +11,7 @@ export function DashboardPage() {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
   const [showAIModal, setShowAIModal] = useState(false);
+  const [selectedEventId, setSelectedEventId] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     async function loadEvents() {
@@ -86,6 +87,17 @@ export function DashboardPage() {
                         ? `R$ ${event.budget.toLocaleString('pt-BR')}`
                         : 'Sem orçamento'}
                     </small>
+                    {event.aiPlan && (
+                      <button
+                        className="ai-plan-btn"
+                        onClick={() => {
+                          setSelectedEventId(event.id);
+                          setShowAIModal(true);
+                        }}
+                      >
+                        Ver plano IA
+                      </button>
+                    )}
                     <Link to={`/events/${event.id}/financeiro`} className="event-fin-btn">
                       Financeiro
                     </Link>
@@ -106,7 +118,16 @@ export function DashboardPage() {
         </section>
       </section>
 
-      {showAIModal && <AIModal onClose={() => setShowAIModal(false)} />}
+      {showAIModal && (
+        <AIModal
+          onClose={() => {
+            setShowAIModal(false);
+            setSelectedEventId(undefined);
+          }}
+          eventId={selectedEventId}
+          initialPlan={selectedEventId ? events.find(e => e.id === selectedEventId)?.aiPlan : undefined}
+        />
+      )}
     </main>
   );
 }

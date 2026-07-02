@@ -6,5 +6,6 @@ const router = Router();
 
 router.use(authMiddleware);
 router.post('/generate-plan', AIController.generateEventPlan);
+router.post('/events/:eventId/save-plan', AIController.saveEventPlan);
 
 export default router;

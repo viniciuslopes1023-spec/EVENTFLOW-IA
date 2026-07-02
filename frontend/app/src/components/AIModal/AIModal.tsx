@@ -5,14 +5,17 @@ import './AIModal.css';
 
 interface AIModalProps {
   onClose: () => void;
+  eventId?: string;
+  initialPlan?: AIEventSuggestion;
 }
 
-export function AIModal({ onClose }: AIModalProps) {
+export function AIModal({ onClose, eventId, initialPlan }: AIModalProps) {
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [result, setResult] = useState<AIEventSuggestion | null>(null);
-  const [checkedItems, setCheckedItems] = useState<boolean[]>([]);
+  const [result, setResult] = useState<AIEventSuggestion | null>(initialPlan || null);
+  const [checkedItems, setCheckedItems] = useState<boolean[]>(initialPlan ? new Array(initialPlan.checklist.length).fill(false) : []);
+  const [saved, setSaved] = useState(!!initialPlan);
 
   const handleSubmit = async () => {
     if (description.trim().length < 10) {
@@ -27,6 +30,15 @@ export function AIModal({ onClose }: AIModalProps) {
       const plan = await aiService.generateEventPlan(description);
       setResult(plan);
       setCheckedItems(new Array(plan.checklist.length).fill(false));
+
+      if (eventId) {
+        try {
+          await aiService.saveEventPlan(eventId, plan);
+          setSaved(true);
+        } catch {
+          console.error('Erro ao salvar plano');
+        }
+      }
     } catch (err: any) {
       setError(err.response?.data?.error || 'Erro ao gerar plano. Tente novamente.');
     } finally {
@@ -78,7 +90,7 @@ export function AIModal({ onClose }: AIModalProps) {
           </div>
         ) : (
           <div className="ai-modal-result">
-            <h2>Plano Gerado</h2>
+            <h2>Plano Gerado {saved && <span className="ai-saved-badge">✓ Salvo no evento</span>}</h2>
 
             <section className="ai-result-section">
               <h3>Checklist <span className="ai-checklist-counter">({completedCount} de {totalCount} concluídas)</span></h3>

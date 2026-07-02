@@ -28,6 +28,7 @@ model Event {
   location     String?
   budget       Float?
   status       String        @default("draft")
+  aiPlan       Json?
   userId       String
   user         User          @relation(fields: [userId], references: [id])
   createdAt    DateTime      @default(now())

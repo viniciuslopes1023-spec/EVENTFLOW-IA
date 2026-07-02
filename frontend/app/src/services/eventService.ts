@@ -1,4 +1,5 @@
 import api from './api';
+import type { AIEventSuggestion } from '../types/ai';
 
 export type Event = {
   id: string;
@@ -8,6 +9,7 @@ export type Event = {
   location?: string;
   budget?: number;
   status: string;
+  aiPlan?: AIEventSuggestion;
   createdAt: string;
 };
 

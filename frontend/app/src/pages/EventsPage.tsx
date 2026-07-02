@@ -4,12 +4,15 @@ import { type CreateEventData, type Event, eventService } from '../services/even
 import '../styles/dashboard.css';
 import '../styles/events.css';
 import { Sidebar } from '../components/Sidebar/Sidebar';
+import { AIModal } from '../components/AIModal/AIModal';
 
 
 export function EventsPage() {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
+  const [showAIModal, setShowAIModal] = useState(false);
+  const [selectedEventId, setSelectedEventId] = useState<string | undefined>(undefined);
   const [form, setForm] = useState<CreateEventData>({
     title: '',
     date: '',
@@ -138,7 +141,10 @@ export function EventsPage() {
             {events.map((event) => (
               <div className="event-row" key={event.id}>
                 <div>
-                  <strong>{event.title}</strong>
+                  <strong>
+                    {event.title}
+                    {event.aiPlan && <span className="ai-plan-badge">Plano IA ✓</span>}
+                  </strong>
                   <span>
                     {new Date(event.date).toLocaleDateString('pt-BR')} às {new Date(event.date).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}
                     {event.location && ` · ${event.location}`}
@@ -149,6 +155,17 @@ export function EventsPage() {
                   <small>
                     {event.budget ? `R$ ${event.budget.toLocaleString('pt-BR')}` : 'Sem orçamento'}
                   </small>
+                  {event.aiPlan && (
+                    <button
+                      className="ai-plan-btn"
+                      onClick={() => {
+                        setSelectedEventId(event.id);
+                        setShowAIModal(true);
+                      }}
+                    >
+                      Ver plano
+                    </button>
+                  )}
                   <Link to={`/events/${event.id}/financeiro`} className="event-fin-btn">
                     Financeiro
                   </Link>
@@ -162,6 +179,17 @@ export function EventsPage() {
           </div>
         </article>
       </section>
+
+      {showAIModal && (
+        <AIModal
+          onClose={() => {
+            setShowAIModal(false);
+            setSelectedEventId(undefined);
+          }}
+          eventId={selectedEventId}
+          initialPlan={selectedEventId ? events.find(e => e.id === selectedEventId)?.aiPlan : undefined}
+        />
+      )}
     </main>
   );
 }
