@@ -126,11 +126,32 @@
   padding: 0;
 }
 
+.ai-checklist-counter {
+  color: var(--muted);
+  font-weight: 400;
+  text-transform: none;
+}
+
 .ai-checklist li {
   align-items: center;
+  cursor: pointer;
   display: flex;
   gap: 12px;
   padding: 8px 0;
+  transition: opacity 0.15s;
+}
+
+.ai-checklist li:hover {
+  opacity: 0.8;
+}
+
+.ai-checklist li.ai-checklist-checked {
+  opacity: 0.5;
+}
+
+.ai-checklist li.ai-checklist-checked span:last-child,
+.ai-checklist li.ai-checklist-checked span:last-child {
+  text-decoration: line-through;
 }
 
 .ai-checkbox {
@@ -140,6 +161,12 @@
   flex-shrink: 0;
   height: 18px;
   width: 18px;
+  transition: all 0.15s;
+}
+
+.ai-checkbox.checked {
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 /* Suppliers */

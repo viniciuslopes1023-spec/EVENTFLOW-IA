@@ -12,6 +12,7 @@ export function AIModal({ onClose }: AIModalProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [result, setResult] = useState<AIEventSuggestion | null>(null);
+  const [checkedItems, setCheckedItems] = useState<boolean[]>([]);
 
   const handleSubmit = async () => {
     if (description.trim().length < 10) {
@@ -25,6 +26,7 @@ export function AIModal({ onClose }: AIModalProps) {
     try {
       const plan = await aiService.generateEventPlan(description);
       setResult(plan);
+      setCheckedItems(new Array(plan.checklist.length).fill(false));
     } catch (err: any) {
       setError(err.response?.data?.error || 'Erro ao gerar plano. Tente novamente.');
     } finally {
@@ -35,6 +37,15 @@ export function AIModal({ onClose }: AIModalProps) {
   const formatCurrency = (value: number) => {
     return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   };
+
+  const toggleChecklistItem = (index: number) => {
+    const newChecked = [...checkedItems];
+    newChecked[index] = !newChecked[index];
+    setCheckedItems(newChecked);
+  };
+
+  const completedCount = checkedItems.filter(Boolean).length;
+  const totalCount = result?.checklist.length || 0;
 
   return (
     <div className="ai-modal-overlay" onClick={onClose}>
@@ -70,11 +81,15 @@ export function AIModal({ onClose }: AIModalProps) {
             <h2>Plano Gerado</h2>
 
             <section className="ai-result-section">
-              <h3>Checklist</h3>
+              <h3>Checklist <span className="ai-checklist-counter">({completedCount} de {totalCount} concluídas)</span></h3>
               <ul className="ai-checklist">
                 {result.checklist.map((item, index) => (
-                  <li key={index}>
-                    <span className="ai-checkbox" />
+                  <li
+                    key={index}
+                    className={checkedItems[index] ? 'ai-checklist-checked' : ''}
+                    onClick={() => toggleChecklistItem(index)}
+                  >
+                    <span className={`ai-checkbox ${checkedItems[index] ? 'checked' : ''}`} />
                     {item}
                   </li>
                 ))}
