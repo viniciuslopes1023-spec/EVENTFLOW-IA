@@ -6,14 +6,14 @@
 }
 
 .fin-summary-card {
-  background: var(--card);
+  background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 12px;
   padding: 24px;
 }
 
 .fin-summary-card span {
-  color: var(--muted);
+  color: var(--text-muted);
   display: block;
   font-size: 13px;
   font-weight: 500;
@@ -27,16 +27,16 @@
 }
 
 .fin-income strong { color: var(--success); }
-.fin-expense strong { color: #f87171; }
+.fin-expense strong { color: var(--danger); }
 .fin-balance-pos strong { color: var(--accent); }
-.fin-balance-neg strong { color: #f87171; }
+.fin-balance-neg strong { color: var(--danger); }
 
 .fin-form-panel {
   margin-bottom: 24px;
 }
 
 .fin-transaction-title {
-  color: var(--text);
+  color: var(--text-primary);
   font-size: 14px;
   font-weight: 500;
 }
@@ -48,4 +48,4 @@
 }
 
 .fin-amount-income { color: var(--success); }
-.fin-amount-expense { color: #f87171; }
+.fin-amount-expense { color: var(--danger); }

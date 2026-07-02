@@ -5,25 +5,34 @@
 }
 
 .tasks-event-selector label {
-  color: var(--muted);
-  font-size: 13px;
+  color: var(--text-secondary);
+  font-size: 12px;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .tasks-select {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--bg-secondary);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  color: var(--text);
+  border-radius: 8px;
+  color: var(--text-primary);
   font-size: 14px;
-  padding: 12px 14px;
+  padding: 10px 14px;
+  padding-right: 36px;
   width: 100%;
   cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231a56db' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
 }
 
 .tasks-select:focus {
-  border-color: var(--primary);
+  border-color: var(--accent);
   outline: none;
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.15);
 }
 
 .tasks-progress-panel {
@@ -38,24 +47,24 @@
 }
 
 .tasks-progress-header span {
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 13px;
 }
 
 .tasks-progress-header strong {
-  color: var(--primary);
+  color: var(--accent);
   font-size: 15px;
 }
 
 .tasks-progress-track {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-secondary);
   border-radius: 999px;
   height: 8px;
   overflow: hidden;
 }
 
 .tasks-progress-bar {
-  background: var(--gradient-primary);
+  background: var(--accent);
   border-radius: 999px;
   height: 100%;
   transition: width 0.4s ease;
@@ -72,20 +81,21 @@
 }
 
 .tasks-add-btn {
-  background: var(--gradient-primary);
+  background: var(--accent);
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   color: #fff;
   cursor: pointer;
   font-size: 14px;
   font-weight: 700;
   padding: 12px 20px;
-  transition: opacity 0.2s;
+  transition: all 0.2s;
   white-space: nowrap;
 }
 
 .tasks-add-btn:hover {
-  opacity: 0.88;
+  background: var(--accent-hover);
+  transform: translateY(-1px);
 }
 
 .tasks-list {
@@ -95,17 +105,18 @@
 
 .task-row {
   align-items: center;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-secondary);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 8px;
   display: flex;
   gap: 12px;
   padding: 12px 14px;
-  transition: border-color 0.15s;
+  transition: all 0.15s;
 }
 
 .task-row:hover {
-  border-color: rgba(155, 124, 255, 0.3);
+  background: var(--bg-hover);
+  border-color: var(--accent);
 }
 
 .task-row.task-done {
@@ -128,17 +139,17 @@
 }
 
 .task-done .task-check {
-  background: var(--primary);
-  border-color: var(--primary);
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 .task-title {
-  color: var(--text);
+  color: var(--text-primary);
   flex: 1;
   font-size: 14px;
 }
 
 .task-done .task-title {
-  color: var(--muted);
+  color: var(--text-muted);
   text-decoration: line-through;
 }

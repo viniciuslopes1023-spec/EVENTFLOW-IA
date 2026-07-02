@@ -1,5 +1,5 @@
 .ai-modal-overlay {
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,7 +11,7 @@
 }
 
 .ai-modal {
-  background: var(--bg-soft);
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 16px;
   max-width: 640px;
@@ -25,7 +25,7 @@
 .ai-modal-close {
   background: none;
   border: none;
-  color: var(--muted);
+  color: var(--text-muted);
   cursor: pointer;
   font-size: 20px;
   padding: 8px;
@@ -36,25 +36,26 @@
 }
 
 .ai-modal-close:hover {
-  color: var(--text);
+  color: var(--text-primary);
 }
 
 .ai-modal-form h2,
 .ai-modal-result h2 {
   font-size: 24px;
   margin: 0 0 8px;
+  color: var(--text-primary);
 }
 
 .ai-modal-form p {
-  color: var(--muted);
+  color: var(--text-muted);
   margin: 0 0 20px;
 }
 
 .ai-modal-form textarea {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--bg-secondary);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  color: var(--text);
+  border-radius: 8px;
+  color: var(--text-primary);
   font-family: inherit;
   font-size: 14px;
   padding: 14px;
@@ -64,12 +65,12 @@
 
 .ai-modal-form textarea:focus {
   outline: none;
-  border-color: var(--primary);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.15);
 }
 
 .ai-modal-form textarea::placeholder {
-  color: var(--muted);
-  opacity: 0.7;
+  color: var(--text-muted);
 }
 
 .ai-form-group {
@@ -77,26 +78,36 @@
 }
 
 .ai-form-group label {
-  color: var(--muted);
+  color: var(--text-secondary);
   display: block;
-  font-size: 13px;
+  font-size: 12px;
+  font-weight: 600;
   margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .ai-form-group select {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--bg-secondary);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  color: var(--text);
+  border-radius: 8px;
+  color: var(--text-primary);
   font-family: inherit;
   font-size: 14px;
-  padding: 12px 14px;
+  padding: 10px 14px;
+  padding-right: 36px;
   width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231a56db' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
 }
 
 .ai-form-group select:focus {
   outline: none;
-  border-color: var(--primary);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.15);
 }
 
 .ai-form-group select:disabled {
@@ -105,13 +116,13 @@
 }
 
 .ai-modal-error {
-  color: #ef4444;
+  color: var(--danger);
   font-size: 13px;
   margin: 12px 0 0;
 }
 
 .ai-modal-submit {
-  background: var(--gradient-primary);
+  background: var(--accent);
   border: none;
   border-radius: 8px;
   color: #fff;
@@ -120,12 +131,13 @@
   font-size: 14px;
   margin-top: 20px;
   padding: 12px 24px;
-  transition: opacity 0.2s;
+  transition: all 0.2s;
   width: 100%;
 }
 
 .ai-modal-submit:hover {
-  opacity: 0.88;
+  background: var(--accent-hover);
+  transform: translateY(-1px);
 }
 
 .ai-modal-submit:disabled {
@@ -142,8 +154,8 @@
 }
 
 .ai-saved-badge {
-  background: rgba(74, 222, 128, 0.15);
-  border: 1px solid rgba(74, 222, 128, 0.3);
+  background: rgba(14, 164, 114, 0.15);
+  border: 1px solid rgba(14, 164, 114, 0.3);
   border-radius: 20px;
   color: var(--success);
   font-size: 12px;
@@ -154,6 +166,12 @@
 
 .ai-result-section {
   margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+}
+
+.ai-result-section:last-of-type {
+  border-bottom: none;
 }
 
 .ai-result-section h3 {
@@ -173,7 +191,7 @@
 }
 
 .ai-checklist-counter {
-  color: var(--muted);
+  color: var(--text-muted);
   font-weight: 400;
   text-transform: none;
 }
@@ -198,11 +216,12 @@
 .ai-checklist li.ai-checklist-checked span:last-child,
 .ai-checklist li.ai-checklist-checked span:last-child {
   text-decoration: line-through;
+  color: var(--text-muted);
 }
 
 .ai-checkbox {
-  background: rgba(155, 124, 255, 0.2);
-  border: 2px solid var(--primary);
+  background: var(--accent-light);
+  border: 2px solid var(--accent);
   border-radius: 4px;
   flex-shrink: 0;
   height: 18px;
@@ -223,8 +242,8 @@
 }
 
 .ai-supplier-badge {
-  background: rgba(87, 211, 255, 0.15);
-  border: 1px solid rgba(87, 211, 255, 0.3);
+  background: var(--accent-light);
+  border: 1px solid rgba(26, 86, 219, 0.3);
   border-radius: 20px;
   color: var(--accent);
   font-size: 13px;
@@ -234,8 +253,8 @@
 /* Budget */
 .ai-budget-card {
   align-items: center;
-  background: rgba(155, 124, 255, 0.1);
-  border: 1px solid rgba(155, 124, 255, 0.2);
+  background: var(--accent-light);
+  border: 1px solid rgba(26, 86, 219, 0.2);
   border-radius: 12px;
   display: flex;
   justify-content: center;
@@ -248,19 +267,19 @@
 }
 
 .ai-budget-range span {
-  color: var(--muted);
+  color: var(--text-muted);
   display: block;
   font-size: 12px;
   margin-bottom: 4px;
 }
 
 .ai-budget-range strong {
-  color: var(--primary);
+  color: var(--accent);
   font-size: 20px;
 }
 
 .ai-budget-separator {
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 24px;
   margin: 0 20px;
 }

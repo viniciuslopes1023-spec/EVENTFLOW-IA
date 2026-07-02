@@ -1,18 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root {
-  --bg: #15131f;
-  --bg-soft: #1b1a27;
-  --card: rgba(31, 30, 43, 0.76);
-  --border: rgba(255, 255, 255, 0.08);
-  --text: #f8fafc;
-  --muted: #a5adbb;
-  --primary: #9b7cff;
-  --accent: #57d3ff;
-  --success: #4ade80;
-  --warning: #f59e0b;
-  --gradient-primary: linear-gradient(135deg, #9b7cff, #57d3ff);
-  --shadow-glow: 0 24px 70px -24px rgba(155, 124, 255, 0.65);
+  /* Backgrounds */
+  --bg-primary: #0a0e1a;
+  --bg-secondary: #0f1628;
+  --bg-card: #131929;
+  --bg-hover: #1a2235;
+
+  /* Borders */
+  --border: #1e2d47;
+  --border-light: #243350;
+
+  /* Text */
+  --text-primary: #e8edf5;
+  --text-secondary: #8899b4;
+  --text-muted: #4a5a72;
+
+  /* Accent — azul corporativo */
+  --accent: #1a56db;
+  --accent-hover: #1e63f5;
+  --accent-light: rgba(26, 86, 219, 0.12);
+
+  /* Gold — para destaques premium */
+  --gold: #c9a84c;
+  --gold-light: rgba(201, 168, 76, 0.12);
+
+  /* Status */
+  --success: #0ea472;
+  --warning: #c9a84c;
+  --danger: #e53e3e;
+
+  /* Sidebar */
+  --sidebar-bg: #080c18;
+  --sidebar-border: #1a2235;
+
+  /* Legacy aliases for compatibility */
+  --bg: var(--bg-primary);
+  --bg-soft: var(--bg-card);
+  --card: var(--bg-card);
+  --text: var(--text-primary);
+  --muted: var(--text-muted);
+  --primary: var(--accent);
+  --gradient-primary: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  --shadow-glow: 0 24px 70px -24px rgba(26, 86, 219, 0.4);
 }
 
 * {
@@ -22,13 +52,28 @@
 body {
   margin: 0;
   font-family: 'Inter', Arial, Helvetica, sans-serif;
-  background:
-    radial-gradient(1200px 600px at 80% -10%, rgba(155, 124, 255, 0.16), transparent 60%),
-    radial-gradient(900px 500px at -10% 20%, rgba(87, 211, 255, 0.12), transparent 60%),
-    var(--bg);
-  background-attachment: fixed;
-  color: var(--text);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-light);
 }
 
 h1,
@@ -41,4 +86,88 @@ h3 {
 button,
 a {
   font: inherit;
+}
+
+/* Global form elements */
+select,
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+textarea,
+.event-input {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231a56db' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+select option {
+  background: #131929;
+  color: #e8edf5;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.15);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* Global buttons */
+button {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }

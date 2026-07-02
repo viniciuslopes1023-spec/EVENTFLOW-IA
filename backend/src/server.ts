@@ -21,7 +21,6 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/events', taskRoutes);
-app.use('/api', taskRoutes);
 app.use('/api/events', transactionRoutes);
 app.use('/api/events', supplierRoutes);
 app.use('/api/ai', aiRoutes);

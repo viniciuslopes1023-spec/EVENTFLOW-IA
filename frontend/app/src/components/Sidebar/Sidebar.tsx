@@ -25,7 +25,23 @@ export function Sidebar() {
           Fornecedores
         </NavLink>
       </nav>
-      <button onClick={logout}>Sair</button>
+      <button
+        onClick={logout}
+        style={{
+          marginTop: 'auto',
+          background: 'transparent',
+          color: 'var(--danger)',
+          border: '1px solid var(--danger)',
+          borderRadius: '8px',
+          padding: '10px 14px',
+          fontWeight: 600,
+          cursor: 'pointer',
+          width: '100%',
+          transition: 'all 0.15s'
+        }}
+      >
+        Sair
+      </button>
     </aside>
   );
 }
