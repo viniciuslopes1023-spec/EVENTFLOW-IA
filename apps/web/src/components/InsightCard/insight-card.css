@@ -1,8 +1,7 @@
 .insight-card {
-    background: linear-gradient(135deg, rgba(155, 124, 255, 0.2), rgba(87, 211, 255, 0.12));
-    border: 1px solid rgba(155, 124, 255, 0.32);
+    background: linear-gradient(135deg, var(--accent-light), rgba(26, 86, 219, 0.08));
+    border: 1px solid rgba(26, 86, 219, 0.3);
     border-radius:  20px;
-    box-shadow: var(--shadow-glow);
     padding: 32px;
 }
 
@@ -18,14 +17,28 @@
     font-size: 28px;
     line-height: 1.2;
     margin: 0 0 16px;
+    color: var(--text-primary);
+}
+
+.insight-card p {
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 0 24px;
 }
 
 .insight-card button {
-    background: #ffffff;
+    background: var(--accent);
     border: none;
     border-radius: 8px;
-    color: #15131f;
+    color: #ffffff;
     cursor:  pointer;
     font-weight: 700;
     padding: 12px 18px;
+    transition: all 0.2s;
+}
+
+.insight-card button:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
 }

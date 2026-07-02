@@ -1,5 +1,5 @@
 .feature-card {
-    background: linear-gradient(180deg, rgba(35, 34, 49, 0.82), rgba(26, 25, 37, 0.68));
+    background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 24px;
@@ -7,17 +7,18 @@
 }
 
 .feature-card:hover {
-    border-color: rgba(87, 211, 255, 0.38);
+    border-color: var(--accent);
     transform: translateY(-3px);
 }
 
 .feature-card h3 {
     font-size: 20px;
     margin: 0 0 12px;
+    color: var(--text-primary);
 }
 
 .feature-card p {
-    color: var(--muted);
+    color: var(--text-muted);
     line-height: 1.6;
     margin: 0;
 }

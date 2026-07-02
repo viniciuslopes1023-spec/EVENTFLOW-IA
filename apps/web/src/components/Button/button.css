@@ -1,9 +1,9 @@
 .button {
     align-items: center;
-    background: var(--gradient-primary);
+    background: var(--accent);
     border: none;
     border-radius: 8px;
-    box-shadow: 0 14px 36px -18px rgba(87, 211, 255, 0.8);
+    box-shadow: 0 14px 36px -18px rgba(26, 86, 219, 0.5);
     color: #ffffff;
     cursor: pointer;
     display: inline-flex;
@@ -14,18 +14,24 @@
     transition: 0.2s ease;
 }
 
+.button:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
 .button-primary{
-    background: var(--gradient-primary);
+    background: var(--accent);
     color: #ffffff;
 }
 
 .button-secondary{
-    background: rgba(255, 255, 255, 0.04);
+    background: transparent;
     border: 1px solid var(--border);
     box-shadow: none;
-    color: var(--text);
+    color: var(--text-primary);
 }
 
-.button:hover{
-    transform: translateY(-1px);
+.button-secondary:hover{
+    border-color: var(--accent);
+    color: var(--accent);
 }

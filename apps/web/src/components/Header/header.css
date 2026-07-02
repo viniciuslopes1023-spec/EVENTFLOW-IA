@@ -1,7 +1,7 @@
 .header {
   align-items: center;
   backdrop-filter: blur(16px);
-  background: rgba(21, 19, 31, 0.74);
+  background: rgba(8, 12, 24, 0.9);
   border-bottom: 1px solid var(--border);
   display: flex;
   gap: 24px;
@@ -17,7 +17,7 @@
 
 .header-brand {
   align-items: center;
-  color: var(--text);
+  color: var(--text-primary);
   display: inline-flex;
   gap: 10px;
   text-decoration: none;
@@ -25,9 +25,8 @@
 
 .header-logo-mark {
   align-items: center;
-  background: var(--gradient-primary);
+  background: var(--accent);
   border-radius: 14px;
-  box-shadow: var(--shadow-glow);
   color: #ffffff;
   display: inline-flex;
   font-size: 18px;
@@ -37,7 +36,7 @@
 }
 
 .header-logo {
-  color: var(--text);
+  color: var(--text-primary);
   font-size: 20px;
   letter-spacing: -0.03em;
 }
@@ -48,14 +47,14 @@
 }
 
 .header-nav a {
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
 }
 
 .header-nav a:hover {
-  color: var(--text);
+  color: var(--text-primary);
 }
 
 @media (max-width: 720px) {
