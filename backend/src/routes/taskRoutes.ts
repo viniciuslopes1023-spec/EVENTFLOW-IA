@@ -8,7 +8,7 @@ router.use(authMiddleware);
 
 router.post('/:eventId/tasks', TaskController.create);
 router.get('/:eventId/tasks', TaskController.findByEvent);
-router.patch('/tasks/:id/toggle', TaskController.toggleDone);
-router.delete('/tasks/:id', TaskController.delete);
+router.patch('/:eventId/tasks/:id/toggle', TaskController.toggleDone);
+router.delete('/:eventId/tasks/:id', TaskController.delete);
 
 export default router;

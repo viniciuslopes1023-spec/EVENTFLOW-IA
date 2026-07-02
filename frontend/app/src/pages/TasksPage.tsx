@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { type Event, eventService } from '../services/eventService';
 import { type Task, taskService } from '../services/tasksService';
 import '../styles/dashboard.css';
 import '../styles/tasks.css';
+import { Sidebar } from '../components/Sidebar/Sidebar';
 
 export function TasksPage() {
   const [events, setEvents] = useState<Event[]>([]);
@@ -58,16 +58,7 @@ export function TasksPage() {
 
   return (
     <main className="dashboard-page">
-      <aside className="dashboard-sidebar">
-        <strong>EventFlow IA</strong>
-        <nav>
-          <Link to="/dashboard">Dashboard</Link>
-          <Link to="/events">Eventos</Link>
-          <Link to="/financeiro">Financeiro</Link>
-          <Link className="active" to="/tasks">Tarefas</Link>
-          <Link to="#">Fornecedores</Link>
-        </nav>
-      </aside>
+    <Sidebar />
 
       <section className="dashboard-content">
         <header className="dashboard-header">

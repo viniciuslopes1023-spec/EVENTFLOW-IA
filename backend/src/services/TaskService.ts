@@ -23,7 +23,9 @@ export const TaskService = {
     });
   },
 
-  async delete(id: string, userId: string) {
-    return prisma.task.delete({ where: { id } });
-  },
+ async delete(id: string, userId: string) {
+  const task = await prisma.task.findFirst({ where: { id, userId } });
+  if (!task) throw new Error('Tarefa não encontrada');
+  return prisma.task.delete({ where: { id } });
+},
 };

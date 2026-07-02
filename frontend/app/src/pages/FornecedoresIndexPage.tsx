@@ -5,7 +5,7 @@ import '../styles/dashboard.css';
 import '../styles/events.css';
 import { Sidebar } from '../components/Sidebar/Sidebar';
 
-export default function FinanceiroIndexPage() {
+export default function FornecedoresIndexPage() {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -27,8 +27,8 @@ export default function FinanceiroIndexPage() {
       <section className="dashboard-content">
         <header className="dashboard-header">
           <div>
-            <h1>Financeiro</h1>
-            <p>Selecione um evento para gerenciar suas finanças.</p>
+            <h1>Fornecedores</h1>
+            <p>Selecione um evento para gerenciar seus fornecedores.</p>
           </div>
         </header>
 
@@ -54,8 +54,8 @@ export default function FinanceiroIndexPage() {
                   <small>
                     {event.budget ? `R$ ${event.budget.toLocaleString('pt-BR')}` : 'Sem orçamento'}
                   </small>
-                  <Link to={`/events/${event.id}/financeiro`} className="event-fin-btn">
-                    Ver financeiro
+                  <Link to={`/events/${event.id}/fornecedores`} className="event-fin-btn">
+                    Ver fornecedores
                   </Link>
                 </div>
               </div>

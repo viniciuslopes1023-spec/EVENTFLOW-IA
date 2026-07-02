@@ -9,6 +9,8 @@ import { RegisterPage } from './pages/RegisterPage';
 import { TasksPage } from './pages/TasksPage';
 import FinanceiroPage from './pages/FinanceiroPage';
 import FinanceiroIndexPage from './pages/FinanceiroIndexPage';
+import FornecedoresPage from './pages/FornecedoresPage';
+import FornecedoresIndexPage from './pages/FornecedoresIndexPage';
 
 function PrivateRoute({ children }: { children: ReactNode }) {
   const { user, loading } = useAuth();
@@ -60,6 +62,22 @@ function App() {
         element={
           <PrivateRoute>
             <FinanceiroIndexPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/events/:eventId/fornecedores"
+        element={
+          <PrivateRoute>
+            <FornecedoresPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/fornecedores"
+        element={
+          <PrivateRoute>
+            <FornecedoresIndexPage />
           </PrivateRoute>
         }
       />

@@ -17,6 +17,7 @@ model User {
   events       Event[]
   tasks        Task[]
   transactions Transaction[]
+  suppliers    Supplier[]
 }
 
 model Event {
@@ -33,6 +34,7 @@ model Event {
   updatedAt    DateTime      @updatedAt
   tasks        Task[]
   transactions Transaction[]
+  suppliers    Supplier[]
 }
 
 model Task {
@@ -54,6 +56,21 @@ model Transaction {
   type      String   @default("expense")
   category  String?
   date      DateTime
+  eventId   String
+  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Supplier {
+  id        String   @id @default(uuid())
+  name      String
+  category  String?
+  contact   String?
+  value     Float?
+  status    String   @default("negotiating")
   eventId   String
   event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
   userId    String

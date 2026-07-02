@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { type CreateEventData, type Event, eventService } from '../services/eventService';
 import '../styles/dashboard.css';
 import '../styles/events.css';
+import { Sidebar } from '../components/Sidebar/Sidebar';
+
 
 export function EventsPage() {
   const [events, setEvents] = useState<Event[]>([]);
@@ -52,16 +54,7 @@ export function EventsPage() {
 
   return (
     <main className="dashboard-page">
-      <aside className="dashboard-sidebar">
-        <strong>EventFlow IA</strong>
-        <nav>
-          <Link to="/dashboard">Dashboard</Link>
-          <Link className="active" to="/events">Eventos</Link>
-          <Link to="/financeiro">Financeiro</Link>
-          <Link to="/tasks">Tarefas</Link>
-          <Link to="#">Fornecedores</Link>
-        </nav>
-      </aside>
+      <Sidebar />
 
       <section className="dashboard-content">
         <header className="dashboard-header">

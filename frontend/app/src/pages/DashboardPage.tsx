@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { type Event, eventService } from '../services/eventService';
+import { Sidebar } from '../components/Sidebar/Sidebar';
 import '../styles/dashboard.css';
 
 export function DashboardPage() {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -28,17 +29,7 @@ export function DashboardPage() {
 
   return (
     <main className="dashboard-page">
-      <aside className="dashboard-sidebar">
-        <strong>EventFlow IA</strong>
-        <nav>
-          <Link className="active" to="/dashboard">Dashboard</Link>
-          <Link to="/events">Eventos</Link>
-          <Link to="/financeiro">Financeiro</Link>
-          <Link to="/tasks">Tarefas</Link>
-          <Link to="#">Fornecedores</Link>
-        </nav>
-        <button onClick={logout} style={{ marginTop: 'auto' }}>Sair</button>
-      </aside>
+      <Sidebar />
 
       <section className="dashboard-content">
         <header className="dashboard-header">
